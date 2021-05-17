@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = null;
+}
+@model IEnumerable<CardOperations.Card>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cards Application</title>
+</head>
+<body>
+    <div>
+        @ViewBag.message
+    </div>
+    <div>
+        <label>Top Card : </label>
+        <label>{{Model[0].Id}}</label>
+        @using (Html.BeginForm("GetTopCard", "", FormMethod.Get))
+        {
+            <input type="submit" value="Get Top Card" />
+        }
+    </div>
+    <div>
+        <button>Shuffle Cards</button>
+    </div>
+    <div>
+        <label>Check Card Exists</label>
+        <input class="form-control" id="cardNo" name="CardNo" type="text" value="" />
+        <select class="form-control" id="cardType" name="cardType">
+            <option>Select Card Type</option>
+            <option>Spade</option>
+            <option>Diamond</option>
+            <option>Club</option>
+            <option>Heart</option>
+        </select>
+        <button>Check</button>
+    </div>
+    <div>
+        <label>Enter number of Cards to display</label>
+        <input class="form-control" id="numberOfCards" name="numberOfCards" type="text" value="" />
+        <button>Display</button>
+    </div>
+    <div>
+        <asp:ListBox ID="lstCards" runat="server" Height="240px" SelectionMode="Multiple" Width="190px" BackColor="#CCFFFF"></asp:ListBox>
+    </div>
+</body>
+</html>
